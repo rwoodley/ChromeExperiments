@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html><head>
+<meta name="description" content="The Visual Calculator is a fun and visual way to learn multiplication, division and factorization." />
+<meta http-equiv="content-type" content="text/html; charset=windows-1252">
+<title>Factor Calculator</title>
+<script type="text/javascript" src="libs/jquery-1.js"></script>
+<script type="text/javascript" src="libs/raphael-min.js"></script>
+<script type="text/javascript" src="main.js"></script>
+</head>
+
+<body>
+
+<h3>Visual Calculator</h3>
+<p>Enter in any simple multiplication or division expression, followed by equals sign (=).
+<p/>
+  <i>Examples: <br/>
+    2x3=<br/>
+    12/3=<br/>
+    3^3=  (for exponents)<br/>
+  </i>
+  </p>
+  <table >
+  <tr>
+    <td colspan='4'>
+      <div style="float: left;">
+      <input id="edValue" type="text" autofocus="autofocus" style="float: right; font-size: 32;"><br/>
+      </div>
+      <div style="float: right; font-size: 32;" id="testText"> </div>      
+    </td>
+  </tr>
+  <tr>
+    <td colspan='4'>
+      <p/>
+    </td>
+  </tr>
+  <tr>
+    <td >
+      <div id="lcanvas" style="background: lightgrey;">
+        
+      </div>
+    </td>
+    <td >
+      <div id="rcanvas" style="background: lightgrey;">
+        
+      </div>
+    </td>
+    <td >
+      <div id="canvas" style="background: yellow;">
+        
+      </div>
+    </td>
+    <td >
+      <div id="canvas2" style="background: beige;">
+        
+      </div>
+    </td>
+  </tr>
+  <tr>
+  </tr>
+</table>
+<p/>
+
+</body></html>

@@ -1,0 +1,22 @@
+{
+  "name": "Visual Calculator",
+  "short_name": "VisualCalc",
+  "description": "This calculator help visualize simple mathematical operations in terms of prime factors.",
+  "version": "0.1",
+  "manifest_version": 2,
+  "app": {
+    "background": {
+      "scripts": [
+        "background.js",
+        "libs/jquery-1.js",
+        "libs/raphael-min.js"
+        ]
+    }
+  },
+  "icons": {
+            "16": "icon16.png",
+            "48" : "icon48.png",
+            "128": "icon128.png"
+            }
+
+}
