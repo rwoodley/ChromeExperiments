@@ -1,3 +1,4 @@
+  // Dependencies: will put LoginID in an element with an ID='LoginID'.
   //<!-- See: https://developers.google.com/+/web/signin/javascript-flow -->
       (function() {
        var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
@@ -11,16 +12,21 @@
         // Update the app to reflect a signed in user
         // Hide the sign-in button now that the user is authorized, for example:
         document.getElementById('signinButton').setAttribute('style', 'display: none');
+        /*
         var ar = document.getElementById('authResult');
         for (var field in authResult) {
           ar.innerHTML +=' ' + field + ': ' +
               authResult[field] + '<br/>';
         }
+        */
         gapi.client.load('plus','v1', function(){
          var request = gapi.client.plus.people.get({
            'userId': 'me'
          });
          request.execute(function(resp) {
+            var ar = document.getElementById('LoginID');
+            ar.value = resp.displayName;
+            //ar.innerHTML = "<p>Logged in as " + resp.displayName + "</p>";
            console.log('Retrieved profile for:' + resp.displayName);
          });
         });
@@ -33,7 +39,6 @@
         console.log('Sign-in state: ' + authResult['error']);
       }
     }
-
     /* Executed when the APIs finish loading */
    function render() {
   
@@ -42,11 +47,13 @@
      var additionalParams = {
        'callback': signinCallback
      };
+     gapi.auth.signIn(additionalParams); // Will use page level configuration
   
-     // Attach a click listener to a button to trigger the flow.
+    /*
      var signinButton = document.getElementById('signinButton');
      signinButton.addEventListener('click', function() {
        console.log('click called.');
        gapi.auth.signIn(additionalParams); // Will use page level configuration
      });
+     */
    }

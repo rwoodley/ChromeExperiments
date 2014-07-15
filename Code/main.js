@@ -150,6 +150,7 @@ function draw3Numbers(i1,i2,i3) {
     var canvas = $("#canvas");
     drawNumber(r3, canvas, i3);
     drawNumber(rr, canvas, 0);
+    if (i3 > 0) logAction("myloginid","studentname","x=x+1");
 }
 function draw4Numbers(i1,i2,i3,i4) {
     var lcanvas = $("#lcanvas");
@@ -160,6 +161,7 @@ function draw4Numbers(i1,i2,i3,i4) {
     drawNumber(r3, canvas, i3);
     var canvas2 = $("#canvas");
     drawNumber(rr, canvas, i4);
+    if (i3 > 0) logAction("myloginid","studentname","x=x+1");
 }
 function drawNumber(r, canvas, num) {
     r.clear();
@@ -191,7 +193,7 @@ function myKeyPress(e)
     return;
   }
   
-  var edValue = document.getElementById("edValue");
+  var edValue = document.getElementById("Formula");
   var s;
   if (keynum == 8) {    // handle backspace
     var tempS = edValue.value;
@@ -259,7 +261,7 @@ function myKeyPress(e)
 
 var r1, r2, r3, rr;
 $(document).ready(function () {
-    var edvalue = document.getElementById("edValue")
+    var edvalue = document.getElementById("Formula")
     edvalue.value = "";
     edvalue.addEventListener("keypress", function(event){return myKeyPress(event);}, false);
     document.getElementById("testText").innerHTML = "";

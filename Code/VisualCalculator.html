@@ -8,9 +8,10 @@
 <meta name="google-signin-cookiepolicy" content="single_host_origin" />
 
 <title>Factor Calculator</title>
-<script type="text/javascript" src="libs/jquery-1.js"></script>
+<script type="text/javascript" src="libs/jquery-1.11.1.min.js"></script>
 <script type="text/javascript" src="libs/raphael-min.js"></script>
 <script type="text/javascript" src="main.js"></script>
+<script type="text/javascript" src="usageLog.js"></script>
 <script type="text/javascript" src="auth.js"></script>
   
 </head>
@@ -18,8 +19,10 @@
 <body>
 
 <h3>Visual Calculator</h3>
+<!--- Header: eventually this should go into an html include -->
 <button id="signinButton">Sign in with Google</button>
-<div id="authResult" />
+<div id="authResult"></div>
+<!--- End Header -->
 <p>Enter in any simple multiplication or division expression, followed by equals sign (=).
 <p/>
   <i>Examples: <br/>
@@ -32,7 +35,10 @@
   <tr>
     <td colspan='4'>
       <div style="float: left;">
-      <input id="edValue" type="text" autofocus="autofocus" style="float: right; font-size: 32;"><br/>
+      <form id="myForm">
+        <input id="LoginID" name="LoginID" value="bob" type="hidden"></input>
+        <input id="Formula" name="Formula" type="text" autofocus="autofocus" style="float: right; font-size: 32;"><br/>
+      </form>
       </div>
       <div style="float: right; font-size: 32;" id="testText"> </div>      
     </td>
