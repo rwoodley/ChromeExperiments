@@ -22,6 +22,7 @@ function updateForm(form, key, serializedData) {
 
   // fire off the request to /form.php
   request = $.ajax({
+      //url: "https://script.google.com/macros/s/AKfycbxw-URaJzeDjOJvTYFGqcTqPIZ7fSg92eFKCAlezUBAHtQqLis/exec",
       url: "https://script.google.com/macros/s/AKfycbySb5zPN-EUnkien5DjjPo0qXGnxfwYln_YxzaeHZvInaSukJUB/exec",
       type: "post",
       data: serializedData
@@ -30,7 +31,7 @@ function updateForm(form, key, serializedData) {
   // callback handler that will be called on success
   request.done(function (response, textStatus, jqXHR){
       // log a message to the console
-      console.log("Hooray, it worked!");
+      console.log("Hooray, it worked!: " + textStatus);
   });
 
   // callback handler that will be called on failure
@@ -49,4 +50,40 @@ function updateForm(form, key, serializedData) {
       //$inputs.prop("disabled", false);
   });
 
+}
+function checkRosters() {
+  var request;
+  // abort any pending request
+  if (request) {
+      request.abort();
+  }
+  var serializedData = "LoginID=AnnieMorse@steamspace.net"
+// https://script.google.com/macros/s/AKfycbxw-URaJzeDjOJvTYFGqcTqPIZ7fSg92eFKCAlezUBAHtQqLis/exec
+    request = $.ajax({
+        url: "https://script.google.com/macros/s/AKfycbxw-URaJzeDjOJvTYFGqcTqPIZ7fSg92eFKCAlezUBAHtQqLis/exec",
+        type: "get",
+        data: serializedData
+    });
+
+    // callback handler that will be called on success
+    request.done(function (response, textStatus, jqXHR){
+        // log a message to the console
+      console.log("Hooray, it worked!: " + textStatus);
+      var el = document.getElementById("rosterResult")
+      el.innerHTML = "<p>You are in these rosters: " + JSON.parse(jqXHR.responseText).rosters + "</p>";
+    });
+
+    // callback handler that will be called on failure
+    request.fail(function (jqXHR, textStatus, errorThrown){
+        // log the error to the console
+        console.error(
+            "The following error occured: "+
+            textStatus, errorThrown
+        );
+    });
+
+    // callback handler that will be called regardless
+    // if the request failed or succeeded
+    request.always(function () {
+    });
 }
